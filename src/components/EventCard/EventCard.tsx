@@ -50,6 +50,9 @@ const EventCard = ({event, index}:Props) => {
                     {STATUSES[event.status]}
                 </Col>
                 <Col>
+                    {event.name}
+                </Col>
+                <Col>
                     {event.phone}
                 </Col>
                 <Col>
@@ -70,6 +73,9 @@ const EventCard = ({event, index}:Props) => {
                     <>
                         <Col>
                             {event.owner}
+                        </Col>
+                        <Col>
+                        <Button color="primary" onClick={openEventPage}>Открыть</Button>
                         </Col>
                         <Col>
                             {event.status == 2 && <Button color="primary" onClick={() => handleAcceptEvent(event.id)}>Принять</Button>}
