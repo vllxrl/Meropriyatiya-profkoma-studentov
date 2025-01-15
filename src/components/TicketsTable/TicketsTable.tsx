@@ -7,25 +7,25 @@ import {deleteTicket} from "store/slices/ticketsSlice.ts";
 import {useAppDispatch} from "store/store.ts";
 
 type Props = {
-    tickets:T_Ticket[]
+    tickets: T_Ticket[]
 }
 
-const TicketsTable = ({tickets}:Props) => {
+const TicketsTable = ({tickets}: Props) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     const handleClick = (ticket_id) => {
-        navigate(`/tickets/${ticket_id}`)
+        navigate(`/tickets/${ticket_id}`);
     }
 
-    const openpRroductEditPage = (ticket_id) => {
-        navigate(`/tickets/${ticket_id}/edit`)
+    const openProductEditPage = (ticket_id) => {
+        navigate(`/tickets/${ticket_id}/edit`);
     }
 
     const handleDeleteTicket = async (ticket_id) => {
-        dispatch(deleteTicket(ticket_id))
+        dispatch(deleteTicket(ticket_id));
     }
 
     const columns = useMemo(
@@ -33,6 +33,17 @@ const TicketsTable = ({tickets}:Props) => {
             {
                 Header: '№',
                 accessor: 'id',
+            },
+            {
+                Header: 'Фото',
+                accessor: 'image',
+                Cell: ({ value }) => (
+                    <img
+                        alt="ticket"
+                        src={value}
+                        style={{ width: '100px', height: 'auto', objectFit: 'cover' }}
+                    />
+                )
             },
             {
                 Header: 'Название',
@@ -48,7 +59,7 @@ const TicketsTable = ({tickets}:Props) => {
                 Header: "Действие",
                 accessor: "edit_button",
                 Cell: ({ cell }) => (
-                    <Button color="primary" onClick={() => openpRroductEditPage(cell.row.values.id)}>Редактировать</Button>
+                    <Button color="primary" onClick={() => openProductEditPage(cell.row.values.id)}>Редактировать</Button>
                 )
             },
             {
@@ -60,17 +71,17 @@ const TicketsTable = ({tickets}:Props) => {
             }
         ],
         []
-    )
+    );
 
     if (!tickets.length) {
         return (
             <></>
-        )
+        );
     }
 
     return (
         <CustomTable columns={columns} data={tickets} onClick={handleClick} />
-    )
+    );
 };
 
-export default TicketsTable
+export default TicketsTable;
