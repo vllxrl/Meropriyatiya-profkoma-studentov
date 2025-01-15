@@ -111,7 +111,7 @@ const TicketCard = ({ticket, showAddBtn=false, showRemoveBtn=false, editMM=false
                             Открыть
                         </Button>
                     </Link>
-                    {!is_superuser && showAddBtn &&
+                    {showAddBtn &&
                         <Button color="secondary" onClick={handeAddToDraftEvent}>
                             Добавить
                         </Button>
