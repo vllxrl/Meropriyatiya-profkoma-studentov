@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/Meropriyatiya-profkoma-studentov/sw.js', { scope: '/Meropriyatiya-profkoma-studentov/' })})}
